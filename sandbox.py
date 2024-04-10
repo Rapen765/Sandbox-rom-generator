@@ -30,8 +30,9 @@ class SandBoxGenerator(QWidget):
                 for a in range(256):
                     val = eval(expr) % 256
                     val = hex(val)
-                    val.removeprefix("0x")
-                    self.output.append(val)
+                    val = str(val).removeprefix("0x")
+                    self.output.append(val.rjust(2,"0"))
+            print(self.output)
         
         def copy(self):
                 clipboard.copy("".join(self.output))
